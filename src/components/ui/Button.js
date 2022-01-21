@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 const Button = styled.button`
     font-family: inherit;
@@ -38,4 +39,4 @@ Button.defaultProps = {
 	variant: 'primary',
 };
 
-export default Button;
+export default memo( Button );

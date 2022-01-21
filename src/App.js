@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Game from './components/Game';
+import Heading from './components/ui/Heading';
+
+const StyleApp = styled.div`
+	font-family: Roboto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	height: 100vh;
+`;
 
 function App() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={ logo } className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<StyleApp>
+			<Heading>Tic-Tac-Toe</Heading>
+			<Game />
+		</StyleApp>
 	);
 }
 
