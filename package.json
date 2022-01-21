@@ -9,7 +9,12 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/styled-components": "^5.1.20"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,25 +30,58 @@
       "eslint:recommended"
     ],
     "rules": {
-      "array-bracket-spacing": [ "error", "always" ],
-      "arrow-parens": [ "error", "always" ],
+      "array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
       "arrow-spacing": "error",
-      "brace-style": [ "error", "1tbs" ],
-      "camelcase": [ "error", { "properties": "never" } ],
-      "comma-dangle": [ "error", "always-multiline" ],
+      "brace-style": [
+        "error",
+        "1tbs"
+      ],
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
       "comma-spacing": "error",
       "comma-style": "error",
-      "computed-property-spacing": [ "error", "always" ],
+      "computed-property-spacing": [
+        "error",
+        "always"
+      ],
       "dot-notation": "error",
       "eol-last": "error",
       "eqeqeq": "error",
       "func-call-spacing": "error",
-      "indent": [ "error", "tab", { "SwitchCase": 1 } ],
+      "indent": [
+        "error",
+        "tab",
+        {
+          "SwitchCase": 1
+        }
+      ],
       "jsx-quotes": "error",
       "key-spacing": "error",
       "keyword-spacing": "error",
       "lines-around-comment": "off",
-      "no-bitwise": [ "error", { "allow": [ "^" ] } ],
+      "no-bitwise": [
+        "error",
+        {
+          "allow": [
+            "^"
+          ]
+        }
+      ],
       "no-caller": "error",
       "no-cond-assign": "error",
       "no-console": "warn",
@@ -59,7 +97,12 @@
       "no-mixed-spaces-and-tabs": "error",
       "no-multi-spaces": "error",
       "no-multi-str": "off",
-      "no-multiple-empty-lines": [ "error", { "max": 1 } ],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1
+        }
+      ],
       "no-negated-in-lhs": "error",
       "no-nested-ternary": "error",
       "no-redeclare": "error",
@@ -70,39 +113,85 @@
       "no-unreachable": "error",
       "no-unsafe-negation": "error",
       "no-unused-expressions": "error",
-      "no-unused-vars": [ "warn", { "ignoreRestSiblings": true } ],
+      "no-unused-vars": [
+        "warn",
+        {
+          "ignoreRestSiblings": true
+        }
+      ],
       "no-useless-return": "error",
       "no-var": "error",
       "no-whitespace-before-property": "error",
-      "object-curly-spacing": [ "error", "always" ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
       "one-var-declaration-per-line": "error",
-      "padded-blocks": [ "error", "never" ],
+      "padded-blocks": [
+        "error",
+        "never"
+      ],
       "prefer-const": "warn",
-      "quote-props": [ "error", "as-needed" ],
-      "quotes": [ "error", "single", {
-        "allowTemplateLiterals": true,
-        "avoidEscape": true
-      } ],
-      "react/jsx-curly-spacing": [ "error", { "when": "always", "children": false } ],
+      "quote-props": [
+        "error",
+        "as-needed"
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "allowTemplateLiterals": true,
+          "avoidEscape": true
+        }
+      ],
+      "react/jsx-curly-spacing": [
+        "error",
+        {
+          "when": "always",
+          "children": false
+        }
+      ],
       "react/no-unescaped-entities": "off",
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "semi": "error",
       "semi-spacing": "error",
-      "space-before-blocks": [ "error", "always" ],
-      "space-before-function-paren": [ "error", {
-        "anonymous": "never",
-        "asyncArrow": "always",
-        "named": "never"
-      } ],
-      "space-in-parens": [ "error", "always", { "exceptions": [ "empty" ] } ],
-      "space-infix-ops": [ "error", { "int32Hint": false } ],
-      "space-unary-ops": [ "error", {
-        "overrides": {
-          "!": true,
-          "yield": true
+      "space-before-blocks": [
+        "error",
+        "always"
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "never",
+          "asyncArrow": "always",
+          "named": "never"
         }
-      } ],
+      ],
+      "space-in-parens": [
+        "error",
+        "always",
+        {
+          "exceptions": [
+            "empty"
+          ]
+        }
+      ],
+      "space-infix-ops": [
+        "error",
+        {
+          "int32Hint": false
+        }
+      ],
+      "space-unary-ops": [
+        "error",
+        {
+          "overrides": {
+            "!": true,
+            "yield": true
+          }
+        }
+      ],
       "valid-typeof": "error",
       "wrap-iife": "off"
     }
