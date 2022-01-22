@@ -10,6 +10,7 @@ const Button = styled.button`
     padding: 10px 20px;
     box-sizing: border-box;
     box-shadow: 0 0 10px 0 rgba( 0,0,0,.3 );
+    cursor: pointer;
     transition: .3s all;
 
     ${ ( { variant } ) => ( variant === 'primary' ) && css`
