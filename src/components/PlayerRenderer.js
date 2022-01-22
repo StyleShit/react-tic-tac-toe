@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import PlayerO from './ui/PlayerO';
 import PlayerX from './ui/PlayerX';
 
-function PlayerRenderer( { player } ) {
+function PlayerRenderer( { player, ...rest } ) {
 	switch ( player ) {
 		case 'x':
-			return <PlayerX />;
+			return <PlayerX { ...rest } />;
 
 		case 'o':
-			return <PlayerO />;
+			return <PlayerO { ...rest } />;
 
 		default:
 			return null;

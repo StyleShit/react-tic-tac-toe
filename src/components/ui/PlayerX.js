@@ -7,6 +7,7 @@ const PlayerX = styled.div`
     --clr-1: #2e70f6;
     --clr-2: #81e2d2;
 
+    display: inline-block;
     position: relative;
     height: var( --size );
     width: var( --size );

@@ -5,10 +5,14 @@ import Button from './ui/Button';
 import Heading from './ui/Heading';
 
 export default function Game() {
-	const { board, assignCell, reset, winner, gameOver } = useGame( 3 );
+	const { board, assignCell, reset, winner, gameOver, currentPlayer } = useGame( 3 );
 
 	return (
 		<>
+			<Heading as="h2">
+				Current Player: <PlayerRenderer player={ currentPlayer } size=".8em" />
+			</Heading>
+
 			<Board>
 				{
 					board.map( ( row, rowIndex ) => (
