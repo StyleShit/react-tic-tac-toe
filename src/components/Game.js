@@ -31,7 +31,10 @@ export default function Game() {
 
 			{ gameOver &&
 				<Heading as="h2">
-					{ winner ? `${ winner.toUpperCase() } is the winner!` : `It's a tie!` }
+					{ winner
+						? <><PlayerRenderer player={ winner } size=".8em" /> is the winner!</>
+						: `It's a tie!`
+					}
 				</Heading>
 			}
 
