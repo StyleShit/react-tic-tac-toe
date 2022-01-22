@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import useGame from '../hooks/useGame';
 import PlayerRenderer from './PlayerRenderer';
 import Board from './ui/Board/Board';
