@@ -1,92 +1,77 @@
 /**
- * Generate an empty 2d array.
+ * Generate an empty "virtual" 2d array.
  *
- * @param {Number} boardSize - Array dimensions.
+ * @param {Number} boardSize - Array dimensions (will be squared).
  *
- * @return {Array[]}
+ * @return {Array}
  */
 export function generateEmptyBoard( boardSize ) {
 	const array = [];
 
-	for ( let i = 0; i < boardSize; i++ ) {
-		array[ i ] = [];
-
-		for ( let j = 0; j < boardSize; j++ ) {
-			array[ i ][ j ] = null;
-		}
+	for ( let i = 0; i < Math.pow( boardSize, 2 ); i++ ) {
+		array[ i ] = null;
 	}
 
 	return array;
 }
 
 /**
+ * Extract rows, columns and diagonals as arrays from a virtual 2d array.
+ *
+ * @param {Array} board - Board as a virtual 2d array.
+ *
+ * @return { rows: Array, cols: Array, diags: Array };
+ */
+export function extractBoardParts( board ) {
+	const size = parseInt( Math.sqrt( board.length ) );
+
+	const rows = [];
+	const cols = [];
+	const diags = [ [], [] ];
+
+	for ( let i = 0; i < board.length; i += size ) {
+		const index = i / size;
+
+		cols[ index ] = [];
+		rows[ index ] = [];
+
+		// Calculate rows / cols
+		for ( let j = 0; j < size; j++ ) {
+			rows[ index ].push( board[ i + j ] );
+			cols[ index ].push( board[ i / 3 + j * size ] );
+		}
+
+		// Calculate diagonals.
+		const iteration = i / 3;
+
+		diags[ 0 ].push( board[ i + iteration ] );
+		diags[ 1 ].push( board[ i - iteration + 2 ] );
+	}
+
+	return {
+		rows,
+		cols,
+		diags,
+	};
+}
+
+/**
  * Get a winner from a board.
  *
- * @param {Array[]} board - Board as a 2d array.
+ * @param {Array} board - Board as a virtual 2d array.
  *
  * @return {String|null} - Winner value or `null`.
  */
 export function getWinner( board ) {
-	// Check rows & cols.
-	for ( let i = 0; i < board.length; i++ ) {
-		const row = board[ i ];
+	const { rows, cols, diags } = extractBoardParts( board );
 
-		if ( arrayHasEqualValues( row ) ) {
-			return row[ 0 ];
+	for ( const part of [ ...rows, ...cols, ...diags ] ) {
+		if ( arrayHasEqualValues( part ) ) {
+			return part[ 0 ];
 		}
-
-		const col = getColumn( board, i );
-
-		if ( arrayHasEqualValues( col ) ) {
-			return col[ 0 ];
-		}
-	}
-
-	// Check LTR diagonal.
-	const diagLTR = getDiagonal( board, 'ltr' );
-
-	if ( arrayHasEqualValues( diagLTR ) ) {
-		return diagLTR[ 0 ];
-	}
-
-	// Check RTL diagonal.
-	const diagRTL = getDiagonal( board, 'rtl' );
-
-	if ( arrayHasEqualValues( diagRTL ) ) {
-		return diagRTL[ 0 ];
 	}
 
 	return null;
-}
-
-/**
- * Get a column as array from a 2d array.
- *
- * @param {Array[]} array - Array to get the column from.
- * @param {Number} col - Column id.
- *
- * @return {Array}
- */
-export function getColumn( array, col ) {
-	return Array( array.length ).fill( null ).map( ( value, row ) => array[ row ][ col ] );
-}
-
-/**
- * Get a diagonal as array from a 2d array.
- *
- * @param {Array[]} array - Array to get the diagonal from.
- * @param {'rtl'|'ltr'} direction - Diagonal direction (starting from top, LTR or RTL).
- *
- * @returns {Array}
- */
-export function getDiagonal( array, direction = 'ltr' ) {
-	const size = array.length;
-
-	return Array( size ).fill( null ).map( ( value, i ) => {
-		const index = ( direction === 'ltr' ) ? i : size - i - 1;
-
-		return array[ i ][ index ];
-	} );
 }
 
 /**
@@ -97,5 +82,5 @@ export function getDiagonal( array, direction = 'ltr' ) {
  * @return {boolean}
  */
 export function arrayHasEqualValues( array ) {
-	return array[ 0 ] !== null && ( new Set( array ) ).size === 1;
+	return array[ 0 ] !== null && array.every( ( value ) => value === array[ 0 ] );
 }

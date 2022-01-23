@@ -11,25 +11,25 @@ export default function useGame( boardSize = 3 ) {
 	const gameOver = ( !! winner || isBoardFull );
 
 	// Assign the current player's value to a specific cell.
-	const assignCell = useCallback( ( { row, cell } ) => {
-		if ( gameOver || board[ row ][ cell ] ) {
+	const assignCell = useCallback( ( id ) => {
+		if ( gameOver || board[ id ] ) {
 			return;
 		}
 
-		setCell( { row, cell, value: currentPlayer } );
+		setCell( id, currentPlayer );
 		toggleNextPlayer();
-	}, [ board, currentPlayer, setCell, toggleNextPlayer, gameOver ] );
+	}, [ board, currentPlayer, gameOver ] );
 
 	// Reset the game.
 	const reset = useCallback( () => {
 		resetBoard();
 		resetPlayer();
-	}, [ resetBoard, resetPlayer ] );
+	}, [] );
 
 	// Reset the game each time the board size changes.
 	useEffect( () => {
 		reset();
-	}, [ boardSize, reset ] );
+	}, [ boardSize ] );
 
 	return {
 		board,
