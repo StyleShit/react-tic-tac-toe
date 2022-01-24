@@ -18,17 +18,20 @@ export default function useGame( boardSize = 3 ) {
 
 		setCell( id, currentPlayer );
 		toggleNextPlayer();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ board, currentPlayer, gameOver ] );
 
 	// Reset the game.
 	const reset = useCallback( () => {
 		resetBoard();
 		resetPlayer();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [] );
 
 	// Reset the game each time the board size changes.
 	useEffect( () => {
 		reset();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ boardSize ] );
 
 	return {

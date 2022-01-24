@@ -23,29 +23,27 @@ export function generateEmptyBoard( boardSize ) {
  * @return { rows: Array, cols: Array, diags: Array };
  */
 export function extractBoardParts( board ) {
-	const size = parseInt( Math.sqrt( board.length ) );
+	const size = Math.sqrt( board.length );
 
 	const rows = [];
 	const cols = [];
 	const diags = [ [], [] ];
 
 	for ( let i = 0; i < board.length; i += size ) {
-		const index = i / size;
+		const iteration = i / size;
 
-		cols[ index ] = [];
-		rows[ index ] = [];
+		cols[ iteration ] = [];
+		rows[ iteration ] = [];
 
 		// Calculate rows / cols
 		for ( let j = 0; j < size; j++ ) {
-			rows[ index ].push( board[ i + j ] );
-			cols[ index ].push( board[ i / 3 + j * size ] );
+			rows[ iteration ].push( board[ i + j ] );
+			cols[ iteration ].push( board[ iteration + j * size ] );
 		}
 
 		// Calculate diagonals.
-		const iteration = i / 3;
-
 		diags[ 0 ].push( board[ i + iteration ] );
-		diags[ 1 ].push( board[ i - iteration + 2 ] );
+		diags[ 1 ].push( board[ i - iteration + size - 1 ] );
 	}
 
 	return {
