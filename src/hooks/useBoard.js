@@ -5,11 +5,11 @@ export default function useBoard( size ) {
 	const [ board, setBoard ] = useState( generateEmptyBoard( size ) );
 
 	// Set a value to a specific cell.
-	const setCell = useCallback( ( { row, cell, value } ) => {
+	const setCell = useCallback( ( id, value ) => {
 		setBoard( ( prev ) => {
 			const clone = [ ...prev ];
 
-			clone[ row ][ cell ] = value;
+			clone[ id ] = value;
 
 			return clone;
 		} );
@@ -21,11 +21,7 @@ export default function useBoard( size ) {
 	}, [ size ] );
 
 	// Determine if the board is full.
-	const isBoardFull = board.reduce( ( isFull, row ) => {
-		const isRowFull = ( row.filter( ( c ) => c !== null ).length === row.length );
-
-		return isFull && isRowFull;
-	}, true );
+	const isBoardFull = board.every( ( value ) => value !== null );
 
 	return {
 		board,

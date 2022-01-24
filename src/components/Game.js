@@ -4,8 +4,10 @@ import Board from './ui/Board/Board';
 import Button from './ui/Button';
 import Heading from './ui/Heading';
 
+const boardSize = 3;
+
 export default function Game() {
-	const { board, assignCell, reset, winner, gameOver, currentPlayer } = useGame( 3 );
+	const { board, assignCell, reset, winner, gameOver, currentPlayer } = useGame( boardSize );
 
 	return (
 		<>
@@ -13,18 +15,12 @@ export default function Game() {
 				Current Player: <PlayerRenderer player={ currentPlayer } size=".8em" />
 			</Heading>
 
-			<Board>
+			<Board size={ boardSize }>
 				{
-					board.map( ( row, rowIndex ) => (
-						<Board.Row key={ rowIndex }>
-							{
-								row.map( ( cell, cellIndex ) => (
-									<Board.Cell key={ cellIndex } onClick={ () => assignCell( { row: rowIndex, cell: cellIndex } ) }>
-										<PlayerRenderer player={ cell } />
-									</Board.Cell>
-								) )
-							}
-						</Board.Row>
+					board.map( ( cell, index ) => (
+						<Board.Cell key={ index } onClick={ () => assignCell( index ) }>
+							<PlayerRenderer player={ cell } />
+						</Board.Cell>
 					) )
 				}
 			</Board>

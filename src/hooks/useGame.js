@@ -11,25 +11,28 @@ export default function useGame( boardSize = 3 ) {
 	const gameOver = ( !! winner || isBoardFull );
 
 	// Assign the current player's value to a specific cell.
-	const assignCell = useCallback( ( { row, cell } ) => {
-		if ( gameOver || board[ row ][ cell ] ) {
+	const assignCell = useCallback( ( id ) => {
+		if ( gameOver || board[ id ] ) {
 			return;
 		}
 
-		setCell( { row, cell, value: currentPlayer } );
+		setCell( id, currentPlayer );
 		toggleNextPlayer();
-	}, [ board, currentPlayer, setCell, toggleNextPlayer, gameOver ] );
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ board, currentPlayer, gameOver ] );
 
 	// Reset the game.
 	const reset = useCallback( () => {
 		resetBoard();
 		resetPlayer();
-	}, [ resetBoard, resetPlayer ] );
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [] );
 
 	// Reset the game each time the board size changes.
 	useEffect( () => {
 		reset();
-	}, [ boardSize, reset ] );
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ boardSize ] );
 
 	return {
 		board,
