@@ -1,6 +1,6 @@
 # React Tic-Tac-Toe
 
-Just a simple Tic-Tac-Toe game using React. Inspired from [this Dribbble](https://dribbble.com/shots/4239811-Tic-Tac-Toe) by [Alexandru Dranga](https://dribbble.com/alexdranga).
+Just a simple Tic-Tac-Toe game using React. Inspired by [this Dribbble](https://dribbble.com/shots/4239811-Tic-Tac-Toe) by [Alexandru Dranga](https://dribbble.com/alexdranga).
 
 
 ## Live Demo:
